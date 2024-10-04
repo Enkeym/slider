@@ -1,6 +1,9 @@
 # Node.js
 node_modules
 
+#Config
+jsconfig.json
+
 # Environment Variables
 .env
 

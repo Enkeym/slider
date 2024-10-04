@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const slidesApi = createApi({
   reducerPath: 'slidesApi',
-  baseQuery: fetchBaseQuery({ baseUrl: '' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000' }),
   tagTypes: ['Slides'],
   endpoints: (builder) => ({
     getSlides: builder.query({
