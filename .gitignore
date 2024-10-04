@@ -1,0 +1,14 @@
+# Node.js
+node_modules
+
+# Environment Variables
+.env
+
+# Uploads
+uploads/*
+!uploads/keep
+
+# Prisma
+prisma/migrations/
+prisma/dev.db
+prisma/dev.db-journal
