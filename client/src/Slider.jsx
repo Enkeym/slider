@@ -1,13 +1,13 @@
 // components/Slider.jsx
-import React, {useCallback, useEffect, useState} from 'react';
-import {Col, Container, Row} from 'react-bootstrap';
+import { useCallback, useEffect, useState } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
 import AddSlide from './components/AddSlide';
 import Slide from './components/Slide';
 import SlideInterval from './components/SlideInterval';
 import SliderControls from './components/SliderControls';
 
 
-const Slider = ({slides, initialInterval = 1000}) => {
+const Slider = ({ slides, initialInterval = 1000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [slideInterval, setSlideInterval] = useState(initialInterval);
