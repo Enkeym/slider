@@ -1,10 +1,11 @@
 // components/Slider.jsx
 import { useCallback, useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import AddSlide from './components/AddSlide';
+import AddSlide from './components/addSlide/AddSlide';
 import Slide from './components/Slide';
 import SlideInterval from './components/SlideInterval';
-import SliderControls from './components/SliderControls';
+import SliderControls from './components/sliderControls/SliderControls';
+import './Slider.css';
 
 
 const Slider = ({ slides, initialInterval = 1000 }) => {

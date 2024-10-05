@@ -1,7 +1,8 @@
-import {useState} from 'react';
-import {Button, Form} from 'react-bootstrap';
+import { useState } from 'react';
+import { Button, Form } from 'react-bootstrap';
+import styles from './FormSlider.module.css';
 
-const FormSlider = ({onSubmit}) => {
+const FormSlider = ({ onSubmit }) => {
   const [formData, setFormData] = useState({
     type: 'text',
     content: '',
@@ -9,12 +10,12 @@ const FormSlider = ({onSubmit}) => {
   });
 
   const handleChange = (e) => {
-    const {name, value} = e.target;
-    setFormData({...formData, [name]: value});
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   };
 
   const handleImageChange = (e) => {
-    setFormData({...formData, image: e.target.files[0]});
+    setFormData({ ...formData, image: e.target.files[0] });
   };
 
   const handleSubmit = (e) => {
@@ -32,15 +33,16 @@ const FormSlider = ({onSubmit}) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="slideType">
-        <Form.Label>Slide Type</Form.Label>
+    <Form onSubmit={handleSubmit} className={styles['form-container']}>
+      <Form.Group controlId="slideType" className={styles['form-group']}>
+        <Form.Label className={styles['form-label']}>Slide Type</Form.Label>
         <Form.Control
           as="select"
           name="type"
           value={formData.type}
           onChange={handleChange}
           required
+          className={styles['form-control']}
         >
           <option value="text">Text</option>
           <option value="image">Image</option>
@@ -48,8 +50,8 @@ const FormSlider = ({onSubmit}) => {
       </Form.Group>
 
       {formData.type === 'text' && (
-        <Form.Group controlId="content" className="mt-3">
-          <Form.Label>Content</Form.Label>
+        <Form.Group controlId="content" className={styles['form-group']}>
+          <Form.Label className={styles['form-label']}>Content</Form.Label>
           <Form.Control
             type="text"
             name="content"
@@ -57,18 +59,25 @@ const FormSlider = ({onSubmit}) => {
             onChange={handleChange}
             placeholder="Enter slide content"
             required
+            className={styles['form-control']}
           />
         </Form.Group>
       )}
 
       {formData.type === 'image' && (
-        <Form.Group controlId="image" className="mt-3">
-          <Form.Label>Upload Slide Image</Form.Label>
-          <Form.Control type="file" name="image" onChange={handleImageChange} required />
+        <Form.Group controlId="image" className={styles['form-group']}>
+          <Form.Label className={styles['form-label']}>Upload Slide Image</Form.Label>
+          <Form.Control
+            type="file"
+            name="image"
+            onChange={handleImageChange}
+            required
+            className={styles['form-control']}
+          />
         </Form.Group>
       )}
 
-      <Button variant="primary" type="submit" className="mt-3">
+      <Button variant="primary" type="submit" className={styles['submit-button']}>
         Add slide
       </Button>
     </Form>
