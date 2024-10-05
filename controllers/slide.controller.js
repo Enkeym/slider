@@ -6,6 +6,7 @@ import { prisma } from '../prisma/prisma.client.js'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
+// Получение всех слайдов
 export const getSliders = async (req, res) => {
   try {
     const sliders = await prisma.slide.findMany()
@@ -15,6 +16,7 @@ export const getSliders = async (req, res) => {
   }
 }
 
+// Добавление нового слайда
 export const addSlider = async (req, res) => {
   const { type, content } = req.body
   const file = req.file
@@ -38,7 +40,7 @@ export const addSlider = async (req, res) => {
       slideData = {
         type: 'text',
         content: content,
-        src: null
+        image: null
       }
     }
 
@@ -54,7 +56,7 @@ export const addSlider = async (req, res) => {
       slideData = {
         type: 'image',
         content: null,
-        src: relativePath
+        image: relativePath
       }
     }
 
@@ -77,6 +79,7 @@ export const addSlider = async (req, res) => {
   }
 }
 
+// Удаление слайда
 export const deleteSlider = async (req, res) => {
   const { id } = req.params
 
@@ -87,8 +90,8 @@ export const deleteSlider = async (req, res) => {
       return res.status(404).json({ error: 'Slide not found' })
     }
 
-    if (slide.type === 'image' && slide.src) {
-      const filePath = path.join(__dirname, '..', slide.src)
+    if (slide.type === 'image' && slide.image) {
+      const filePath = path.join(__dirname, '..', slide.image)
 
       try {
         if (fs.existsSync(filePath)) {
