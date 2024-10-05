@@ -1,9 +1,8 @@
-// components/Slider.jsx
 import { useCallback, useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import AddSlide from './components/addSlide/AddSlide';
-import Slide from './components/Slide';
-import SlideInterval from './components/SlideInterval';
+import DeleteSlide from './components/deleteSlide/DeleteSlide';
+import Slide from './components/slide/Slide';
 import SliderControls from './components/sliderControls/SliderControls';
 import './Slider.css';
 
@@ -13,15 +12,15 @@ const Slider = ({ slides, initialInterval = 1000 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [slideInterval, setSlideInterval] = useState(initialInterval);
 
-  const handleNext = useCallback(() => setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length));
-  const handlePrev = useCallback(() => setCurrentIndex((prevIndex) => (prevIndex === 0 ? slides.length - 1 : prevIndex - 1)))
+  const handleNext = useCallback(() => setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length), [slides.length]);
+  const handlePrev = useCallback(() => setCurrentIndex((prevIndex) => (prevIndex === 0 ? slides.length - 1 : prevIndex - 1)), [slides.length]);
 
   useEffect(() => {
     if (isPlaying) {
       const intervalId = setInterval(handleNext, slideInterval);
       return () => clearInterval(intervalId);
     }
-  }, [handleNext, handlePrev, isPlaying, slideInterval, slides.length]);
+  }, [handleNext, isPlaying, slideInterval]);
 
   return (
     <Container className="slider-container">
@@ -36,25 +35,19 @@ const Slider = ({ slides, initialInterval = 1000 }) => {
         </Col>
       </Row>
 
-      <Row className="justify-content-center">
-        <SliderControls
-          handlePrev={handlePrev}
-          handleNext={handleNext}
-          handlePlay={() => setIsPlaying(true)}
-          handleStop={() => setIsPlaying(false)}
-          isPlaying={isPlaying}
-        />
-      </Row>
+      <SliderControls
+        handlePrev={handlePrev}
+        handleNext={handleNext}
+        handlePlay={() => setIsPlaying(true)}
+        handleStop={() => setIsPlaying(false)}
+        isPlaying={isPlaying}
+        slideInterval={slideInterval}
+        setSlideInterval={setSlideInterval}
+      />
 
-      <Row className="justify-content-center mt-3">
-        <Col xs="auto">
-          <AddSlide isPlaying={isPlaying} />
-        </Col>
-      </Row>
+      <AddSlide isPlaying={isPlaying} />
+      <DeleteSlide slideId={slides[currentIndex].id} isPlaying={isPlaying} />
 
-      <Row className="justify-content-center mt-3">
-        <SlideInterval slideInterval={slideInterval} setSlideInterval={setSlideInterval} />
-      </Row>
     </Container>
   );
 };

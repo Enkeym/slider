@@ -1,0 +1,56 @@
+/* SlideInterval.module.css */
+
+/* Основной контейнер для формы */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin: 15px 0;
+}
+
+/* Лейбл для поля ввода */
+.form-label {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Поле ввода */
+.form-control {
+  width: 100%;
+  max-width: 50px;
+  text-align: center;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Стили при фокусе */
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+  outline: none;
+}
+
+/* Поле при невалидном вводе */
+.form-control:invalid {
+  border-color: #dc3545;
+  box-shadow: none;
+}
+
+
+/* Стили для небольшого экрана */
+@media (max-width: 576px) {
+  .form-group {
+    width: 100%;
+  }
+
+  .form-control {
+    max-width: 100%;
+  }
+}

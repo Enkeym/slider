@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useGetSlidesQuery } from "../app/services/slides.api";
 import { setSlides } from "../features/create.slice";
 import Slider from "./Slider";
-import AddSlide from "./components/addSlide/AddSlide";
+import WelcomeSlides from "./components/welcomeComponent/WelcomeComponent";
 
 function App() {
   const dispatch = useDispatch();
@@ -19,20 +19,24 @@ function App() {
   }, [data, dispatch]);
 
   return (
-    <div className="container">
+    <>
       {isLoading && <span>Loading...</span>}
-      {isError && (
-        <div>
-          <span>The album could not be uploaded!</span>
-          <p>{error?.message || "Unknown error occurred."}</p>
-        </div>
-      )}
-      {slides?.length > 0 ? (
-        <Slider slides={slides} interval={3000} />
-      ) : (
-        <AddSlide />
-      )}
-    </div>
+      {
+        isError && (
+          <div>
+            <span>The album could not be uploaded!</span>
+            <p>{error?.message || "Unknown error occurred."}</p>
+          </div>
+        )
+      }
+      {
+        slides?.length > 0 ? (
+          <Slider slides={slides} interval={3000} />
+        ) : (
+          <WelcomeSlides />
+        )
+      }
+    </>
   );
 }
 

@@ -1,8 +1,8 @@
-import {useState} from 'react';
-import {Form} from 'react-bootstrap';
+import { useState } from 'react';
+import { Form } from 'react-bootstrap';
+import styles from './SlideInterval.module.css';
 
-const SlideInterval = ({slideInterval, setSlideInterval}) => {
-
+const SlideInterval = ({ slideInterval, setSlideInterval }) => {
   const [intervalInSeconds, setIntervalInSeconds] = useState(slideInterval / 1000);
 
   const handleIntervalChange = (e) => {
@@ -15,7 +15,6 @@ const SlideInterval = ({slideInterval, setSlideInterval}) => {
     }
   };
 
-  // Функция для очистки невалидных символов
   const handleBlur = () => {
     if (intervalInSeconds === '') {
       setIntervalInSeconds(slideInterval / 1000);
@@ -23,14 +22,14 @@ const SlideInterval = ({slideInterval, setSlideInterval}) => {
   };
 
   return (
-    <Form.Group controlId="intervalInput" className="w-50">
-      <Form.Label>Slide Interval (seconds)</Form.Label>
+    <Form.Group controlId="intervalInput" className={styles['form-group']}>
       <Form.Control
         type="text"
         value={intervalInSeconds}
         onChange={handleIntervalChange}
         onBlur={handleBlur}
-        placeholder="Enter interval in seconds"
+        placeholder="sec"
+        className={styles['form-control']}
       />
     </Form.Group>
   );

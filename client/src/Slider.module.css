@@ -1,0 +1,29 @@
+/* Контейнер для слайдов */
+.slider-container {
+  margin: 20px auto;
+  max-width: 900px;
+}
+
+/* Левый контейнер для кнопок управления и интервала */
+.controls-left-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+}
+
+/* Правый контейнер для кнопок добавления и удаления */
+.controls-right-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px; 
+}
+
+/* Ряд для выравнивания контролов и интервала */
+.control-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  width: 100%;
+}
