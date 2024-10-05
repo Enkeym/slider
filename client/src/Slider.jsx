@@ -7,20 +7,20 @@ import SlideInterval from './components/SlideInterval';
 import SliderControls from './components/SliderControls';
 
 
-const Slider = ({slides, initialInterval = 3000}) => {
+const Slider = ({slides, initialInterval = 1000}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [slideInterval, setSlideInterval] = useState(initialInterval);
 
   const handleNext = useCallback(() => setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length));
-  const handlePrev = () => setCurrentIndex((prevIndex) => (prevIndex === 0 ? slides.length - 1 : prevIndex - 1));
+  const handlePrev = useCallback(() => setCurrentIndex((prevIndex) => (prevIndex === 0 ? slides.length - 1 : prevIndex - 1)))
 
   useEffect(() => {
     if (isPlaying) {
       const intervalId = setInterval(handleNext, slideInterval);
       return () => clearInterval(intervalId);
     }
-  }, [handleNext, isPlaying, slideInterval, slides.length]);
+  }, [handleNext, handlePrev, isPlaying, slideInterval, slides.length]);
 
   return (
     <Container className="slider-container">

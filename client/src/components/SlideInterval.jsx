@@ -2,6 +2,7 @@ import {useState} from 'react';
 import {Form} from 'react-bootstrap';
 
 const SlideInterval = ({slideInterval, setSlideInterval}) => {
+
   const [intervalInSeconds, setIntervalInSeconds] = useState(slideInterval / 1000);
 
   const handleIntervalChange = (e) => {
