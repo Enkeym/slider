@@ -11,6 +11,7 @@ function App() {
   const slides = useSelector((state) => state.slides.slides);
   const {data, isLoading, isError, error} = useGetSlidesQuery();
 
+
   useEffect(() => {
     if (data) {
       dispatch(setSlides(data || []));
@@ -26,7 +27,7 @@ function App() {
           <p>{error?.message || "Unknown error occurred."}</p>
         </div>
       )}
-      {slides.length > 0 ? (
+      {slides?.length > 0 ? (
         <Slider slides={slides} interval={3000} />
       ) : (
         <AddSlide />

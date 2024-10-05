@@ -1,13 +1,14 @@
-// services/slides.api.js
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+
+export const apiUrl = import.meta.env.VITE_API_URL
 
 export const slidesApi = createApi({
   reducerPath: 'slidesApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000' }),
+  baseQuery: fetchBaseQuery({ baseUrl: apiUrl }),
   tagTypes: ['Slides'],
   endpoints: (builder) => ({
     getSlides: builder.query({
-      query: () => '/sliders',
+      query: () => 'sliders',
       providesTags: (result) =>
         result
           ? [
@@ -19,7 +20,7 @@ export const slidesApi = createApi({
 
     addSlide: builder.mutation({
       query: (newSlide) => ({
-        url: '/sliders/add',
+        url: 'sliders/add',
         method: 'POST',
         body: newSlide
       }),
@@ -28,7 +29,7 @@ export const slidesApi = createApi({
 
     deleteSlide: builder.mutation({
       query: (id) => ({
-        url: `/sliders/delete/${id}`,
+        url: `sliders/delete/${id}`,
         method: 'DELETE'
       }),
       invalidatesTags: [{ type: 'Slides', id: 'LIST' }]

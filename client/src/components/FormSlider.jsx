@@ -20,11 +20,14 @@ const FormSlider = ({onSubmit}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const newSlide = new FormData();
+
     newSlide.append('type', formData.type);
-    newSlide.append('content', formData.content);
-    if (formData.image) {
+    if (formData.type === 'text') {
+      newSlide.append('content', formData.content);
+    } else if (formData.type === 'image' && formData.image) {
       newSlide.append('image', formData.image);
     }
+
     onSubmit(newSlide);
   };
 

@@ -1,18 +1,18 @@
 // components/Slider.jsx
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {Col, Container, Row} from 'react-bootstrap';
-import Slide from './components/Slide';
-import SliderControls from './components/SliderControls';
 import AddSlide from './components/AddSlide';
+import Slide from './components/Slide';
 import SlideInterval from './components/SlideInterval';
+import SliderControls from './components/SliderControls';
 
 
 const Slider = ({slides, initialInterval = 3000}) => {
-  const [currentIndex, setCurrentIndex] = useState(0); 
-  const [isPlaying, setIsPlaying] = useState(false); 
-  const [slideInterval, setSlideInterval] = useState(initialInterval); 
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [slideInterval, setSlideInterval] = useState(initialInterval);
 
-  const handleNext = () => setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
+  const handleNext = useCallback(() => setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length));
   const handlePrev = () => setCurrentIndex((prevIndex) => (prevIndex === 0 ? slides.length - 1 : prevIndex - 1));
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const Slider = ({slides, initialInterval = 3000}) => {
       const intervalId = setInterval(handleNext, slideInterval);
       return () => clearInterval(intervalId);
     }
-  }, [isPlaying, slideInterval, slides.length]);
+  }, [handleNext, isPlaying, slideInterval, slides.length]);
 
   return (
     <Container className="slider-container">
