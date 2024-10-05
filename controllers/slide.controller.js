@@ -1,4 +1,3 @@
-//controllers/slide.controller.js
 import fs from 'fs'
 import path from 'path'
 import { fileURLToPath } from 'url'
@@ -7,7 +6,6 @@ import { prisma } from '../prisma/prisma.client.js'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
-// Получение всех слайдов
 export const getSliders = async (req, res) => {
   try {
     const sliders = await prisma.slide.findMany()
@@ -17,68 +15,67 @@ export const getSliders = async (req, res) => {
   }
 }
 
-// Добавление нового слайда
 export const addSlider = async (req, res) => {
-  const { type, content } = req.body;
-  const file = req.file;
+  const { type, content } = req.body
+  const file = req.file
 
   try {
     if (content && file) {
       return res.status(400).json({
-        error: 'Content and image cannot be added at the same time',
-      });
+        error: 'Content and image cannot be added at the same time'
+      })
     }
 
-    let slideData;
+    let slideData
 
     if (type !== 'text' && type !== 'image') {
       return res.status(400).json({
-        error: 'Type must be either "text" or "image"',
-      });
+        error: 'Type must be either "text" or "image"'
+      })
     }
 
     if (type === 'text') {
       slideData = {
         type: 'text',
         content: content,
-        src: null,
-      };
+        src: null
+      }
     }
 
     if (type === 'image' && file) {
       if (!file.mimetype.startsWith('image/')) {
         return res.status(400).json({
-          error: 'Uploaded file must be an image',
-        });
+          error: 'Uploaded file must be an image'
+        })
       }
 
-      const relativePath = `uploads/${file.filename}`;
-      
+      const relativePath = `uploads/${file.filename}`
+
       slideData = {
         type: 'image',
         content: null,
-        src: relativePath, 
-      };
+        src: relativePath
+      }
     }
 
     if (!slideData) {
       return res.status(400).json({
-        error: 'You must provide content for text or an image.',
-      });
+        error: 'You must provide content for text or an image.'
+      })
     }
 
     const newSlide = await prisma.slide.create({
-      data: slideData,
-    });
+      data: slideData
+    })
 
-    return res.status(201).json(newSlide);
+    return res.status(201).json(newSlide)
   } catch (error) {
-    console.error('Error adding slider:', error);
+    console.error('Error adding slider:', error)
     return res.status(500).json({
-      error: 'Failed to add slider',
-    });
+      error: 'Failed to add slider'
+    })
   }
-};
+}
 
 export const deleteSlider = async (req, res) => {
   const { id } = req.params
@@ -105,7 +102,6 @@ export const deleteSlider = async (req, res) => {
       }
     }
 
-    // Удаляем слайд из базы данных
     await prisma.slide.delete({ where: { id } })
 
     res.status(200).json({ message: 'Slide deleted successfully' })

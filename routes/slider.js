@@ -1,4 +1,3 @@
-//slider.js
 import express from 'express'
 import {
   addSlider,
@@ -10,7 +9,7 @@ import upload from '../middleware/multer.config.js'
 const router = express.Router()
 
 router.get('/', getSliders)
-router.post('/add', upload.single('src'), addSlider)
+router.post('/add', upload.single('image'), addSlider)
 router.delete('/delete/:id', deleteSlider)
 
 export default router
