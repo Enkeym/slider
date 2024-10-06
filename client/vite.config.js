@@ -5,7 +5,9 @@ import { defineConfig } from 'vite'
 
 config({ path: path.resolve(__dirname, '../.env') })
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()]
+  plugins: [react()],
+  server: {
+    port: 4173
+  }
 })

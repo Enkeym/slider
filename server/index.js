@@ -17,7 +17,13 @@ const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(cors())
+app.use(
+  cors({
+    origin: 'http://localhost:4173',
+    methods: ['GET', 'POST', 'DELETE'],
+    credentials: true
+  })
+)
 
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
 app.use('/sliders', slider)
