@@ -22,9 +22,9 @@ const Slider = ({ slides, initialInterval = 1000 }) => {
   }, [handleNext, isPlaying, slideInterval]);
 
   return (
-    <Container className={styles['slider-container']}>
-      <Row>
-        <Col xs={12} lg={8}>
+    <Container fluid className={styles['slider-container']}>
+      <Row className="justify-content-center">
+        <Col xs={12} lg={8} className={styles['slide-wrapper']}>
           {slides.length > 0 && (
             <Slide
               slide={slides?.[currentIndex]}
@@ -35,7 +35,7 @@ const Slider = ({ slides, initialInterval = 1000 }) => {
       </Row>
 
       <Row className={styles['control-row']}>
-        <Col className={styles['controls-left-wrapper']} xs={6}>
+        <Col xs={12} lg={6} className={styles['controls-left-wrapper']}>
           <SliderControls
             handlePrev={handlePrev}
             handleNext={handleNext}
@@ -46,7 +46,7 @@ const Slider = ({ slides, initialInterval = 1000 }) => {
             setSlideInterval={setSlideInterval}
           />
         </Col>
-        <Col className={styles['controls-right-wrapper']} xs={6}>
+        <Col xs={12} lg={6} className={styles['controls-right-wrapper']}>
           <AddSlide isPlaying={isPlaying} />
           <DeleteSlide slideId={slides[currentIndex]?.id} isPlaying={isPlaying} />
         </Col>

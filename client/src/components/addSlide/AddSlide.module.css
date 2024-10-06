@@ -1,84 +1,12 @@
-/* Кнопка добавления слайдов */
+/* AddSlide.module.css */
 .add-slide-button {
-  background-color: #007bff;
-  border-color: #007bff;
-  color: white;
-  padding: 10px 20px;
-  font-size: 1rem;
-  transition: background-color 0.3s ease;
-  cursor: pointer;
+  padding: 0 24px;
+  font-size: 16px;
+  border-radius: 6px;
+  height: 50px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease;
 }
-
-.add-slide-button:disabled {
-  opacity: 0.65;
-  cursor: not-allowed;
-}
-
-.add-slide-button:hover:not(:disabled) {
-  background-color: #0056b3;
-  border-color: #0056b3;
-}
-
-/* Затемнение фона при открытии модального окна */
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 1040;
-}
-
-/* Стиль самого модального окна */
-.custom-modal {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1050;
-}
-
-/* Диалоговое окно модального окна */
-.custom-dialog {
-  position: relative;
-  max-width: 600px;
-  margin: 0 auto;
-  z-index: 1060;
-}
-
-/* Содержимое модального окна */
-.modal-content {
-  background: #fff;
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  position: relative;
-  z-index: 1070;
-}
-
-/* Шапка модального окна */
-.modal-header {
-  background-color: #007bff;
-  color: white;
-  border-bottom: none;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-/* Заголовок модального окна */
-.modal-title {
-  font-weight: bold;
-  font-size: 1.5rem;
-  color: black;
-}
-
-/* Закрывающая кнопка модального окна */
-.modal-header .close {
-  color: white;
-  opacity: 0.8;
-}
-
-/* При наведении */
-.modal-header .close:hover {
-  opacity: 1;
+.add-slide-button:hover {
+  background-color: #218838;
 }
