@@ -12,8 +12,11 @@
 }
 
 .delete-slide-button:disabled {
-  background-color: #ccc;
+  background-color: #d3d3d3;
+  color: #808080;
   cursor: not-allowed;
+  box-shadow: none;
+  pointer-events: none;
 }
 
 .delete-slide-button:hover {

@@ -15,5 +15,5 @@ model Slide {
   createdAt DateTime @default(now())
   type      String
   content   String?
-  image     String? 
+  image     String?
 }

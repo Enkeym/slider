@@ -10,3 +10,13 @@
 .add-slide-button:hover {
   background-color: #218838;
 }
+
+.add-slide-button:disabled {
+  background-color: #d3d3d3;
+  color: #808080;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+  outline: none;
+  border: none;
+}

@@ -37,3 +37,11 @@
 .button-danger:hover {
   background-color: #c82333;
 }
+
+.button:disabled {
+  background-color: #d3d3d3;
+  color: #808080;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
