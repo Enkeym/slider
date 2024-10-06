@@ -15,6 +15,12 @@ const Slider = ({ slides, initialInterval = 1000 }) => {
   const handlePrev = useCallback(() => setCurrentIndex((prevIndex) => (prevIndex === 0 ? slides.length - 1 : prevIndex - 1)), [slides.length]);
 
   useEffect(() => {
+    if (currentIndex >= slides.length) {
+      setCurrentIndex(slides.length - 1);
+    }
+  }, [slides.length, currentIndex]);
+
+  useEffect(() => {
     if (isPlaying) {
       const intervalId = setInterval(handleNext, slideInterval);
       return () => clearInterval(intervalId);

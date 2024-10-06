@@ -1,20 +1,17 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
 import { useGetSlidesQuery } from "../app/services/slides.api";
-import { setSlides } from "../features/create.slice";
 import Slider from "./Slider";
 import WelcomeSlides from "./components/welcomeComponent/WelcomeComponent";
 
 function App() {
-  const dispatch = useDispatch();
-  const slides = useSelector((state) => state.slides.slides);
+  const [slides, setSlides] = useState([]);
   const { data, isLoading, isError, error } = useGetSlidesQuery();
 
   useEffect(() => {
     if (data) {
-      dispatch(setSlides(data || []));
+      setSlides(data || []);
     }
-  }, [data, dispatch]);
+  }, [data]);
 
   return (
     <>

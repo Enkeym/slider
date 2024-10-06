@@ -4,7 +4,7 @@ export const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/'
 
 export const slidesApi = createApi({
   reducerPath: 'slidesApi',
-  baseQuery: fetchBaseQuery({ baseUrl: apiUrl }),
+  baseQuery: fetchBaseQuery({ baseUrl: apiUrl, credentials: 'include' }),
   tagTypes: ['Slides'],
   endpoints: (builder) => ({
     getSlides: builder.query({
@@ -32,7 +32,11 @@ export const slidesApi = createApi({
         url: `sliders/delete/${id}`,
         method: 'DELETE'
       }),
-      invalidatesTags: [{ type: 'Slides', id: 'LIST' }]
+
+      invalidatesTags: (result, error, id) => [
+        { type: 'Slides', id },
+        { type: 'Slides', id: 'LIST' }
+      ]
     })
   })
 })
