@@ -13,7 +13,7 @@ const Slide = ({ slide }) => (
       />
     ) : (
       <Card.Body className={styles['text-slide']}>
-        <Card.Text>{slide.content}</Card.Text>
+        <Card.Text>{slide?.content}</Card.Text>
       </Card.Body>
     )}
   </Card>

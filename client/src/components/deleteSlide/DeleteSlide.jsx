@@ -9,11 +9,17 @@ const DeleteSlide = ({ slideId, isPlaying }) => {
   const dispatch = useDispatch();
 
   const handleDelete = async () => {
+    if (!slideId) {
+      console.error('Slide ID is undefined');
+      return;
+    }
+
     try {
-      await deleteSlideFromServer(slideId).unwrap();
+      const result = await deleteSlideFromServer(slideId).unwrap();
       dispatch(deleteSlide(slideId));
+      console.log('Slide deleted successfully:', result);
     } catch (error) {
-      console.error('Failed to delete slide', error);
+      console.error('Failed to delete slide:', error);
     }
   };
 
@@ -21,7 +27,7 @@ const DeleteSlide = ({ slideId, isPlaying }) => {
     <button
       onClick={handleDelete}
       className={styles['delete-slide-button']}
-      disabled={isPlaying}
+      disabled={isPlaying || !slideId}
     >
       <FaTrash /> Delete Slide
     </button>

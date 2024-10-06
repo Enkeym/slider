@@ -4,7 +4,7 @@ import AddSlide from './components/addSlide/AddSlide';
 import DeleteSlide from './components/deleteSlide/DeleteSlide';
 import Slide from './components/slide/Slide';
 import SliderControls from './components/sliderControls/SliderControls';
-import './Slider.css';
+import styles from './Slider.module.css';
 
 
 const Slider = ({ slides, initialInterval = 1000 }) => {
@@ -23,7 +23,7 @@ const Slider = ({ slides, initialInterval = 1000 }) => {
   }, [handleNext, isPlaying, slideInterval]);
 
   return (
-    <Container className="slider-container">
+    <Container className={styles['slider-container']}>
       <Row className="justify-content-center">
         <Col xs={12} lg={8}>
           {slides.length > 0 && (
@@ -46,7 +46,7 @@ const Slider = ({ slides, initialInterval = 1000 }) => {
       />
 
       <AddSlide isPlaying={isPlaying} />
-      <DeleteSlide slideId={slides[currentIndex].id} isPlaying={isPlaying} />
+      <DeleteSlide slideId={slides[currentIndex]?.id} isPlaying={isPlaying} />
 
     </Container>
   );

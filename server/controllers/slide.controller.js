@@ -83,6 +83,10 @@ export const addSlider = async (req, res) => {
 export const deleteSlider = async (req, res) => {
   const { id } = req.params
 
+  if (!id) {
+    return res.status(400).json({ error: 'ID is required' })
+  }
+
   try {
     const slide = await prisma.slide.findUnique({ where: { id } })
 
@@ -90,6 +94,7 @@ export const deleteSlider = async (req, res) => {
       return res.status(404).json({ error: 'Slide not found' })
     }
 
+    // Логика удаления изображения
     if (slide.type === 'image' && slide.image) {
       const filePath = path.join(__dirname, '..', slide.image)
 

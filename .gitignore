@@ -1,17 +1,2 @@
-# Node.js
-node_modules
-
-#Config
-jsconfig.json
-
-# Environment Variables
 .env
-
-# Uploads
-uploads/*
-!uploads/keep
-
-# Prisma
-prisma/migrations/
-prisma/dev.db
-prisma/dev.db-journal
+node_modules

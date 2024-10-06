@@ -1,0 +1,14 @@
+# Node.js
+node_modules
+
+#Config
+jsconfig.json
+
+# Uploads
+uploads/*
+!uploads/keep
+
+# Prisma
+prisma/migrations/
+prisma/dev.db
+prisma/dev.db-journal
