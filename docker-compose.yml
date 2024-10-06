@@ -13,5 +13,5 @@ services:
       context: .
       dockerfile: ./client/Dockerfile
     ports:
-      - '5173:5173'
+      - '4173:4173'
     restart: always
