@@ -1,36 +1,82 @@
+/* Стиль контейнера формы */
 .form-container {
-  padding: 20px;
-  background-color: #f8f9fa;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 400px;
+  z-index: 1050;
 }
 
+/* Группа формы */
 .form-group {
-  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
 }
 
+/* Заголовок формы */
 .form-label {
   font-weight: bold;
-  font-size: 1rem;
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 1.2rem;
 }
 
+/* Поле ввода формы */
 .form-control {
-  padding: 10px;
-  border-radius: 5px;
+  padding: 12px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
   font-size: 1rem;
+  transition: border-color 0.3s ease;
 }
 
-.submit-button {
-  background-color: #007bff;
+.form-control:focus {
   border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+
+/* Кнопка отправки формы */
+.submit-button {
+  background-color: #28a745;
   color: white;
-  padding: 10px 20px;
   font-size: 1rem;
-  transition: background-color 0.3s ease;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-align: center;
+  width: 100%;
 }
 
 .submit-button:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
+  background-color: #218838;
+}
+
+/* Анимация для появления формы */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -55%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Применение анимации при открытии */
+.form-container {
+  animation: fadeIn 0.3s ease-in-out;
 }

@@ -6,7 +6,6 @@ import Slide from './components/slide/Slide';
 import SliderControls from './components/sliderControls/SliderControls';
 import styles from './Slider.module.css';
 
-
 const Slider = ({ slides, initialInterval = 1000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -24,7 +23,7 @@ const Slider = ({ slides, initialInterval = 1000 }) => {
 
   return (
     <Container className={styles['slider-container']}>
-      <Row className="justify-content-center">
+      <Row>
         <Col xs={12} lg={8}>
           {slides.length > 0 && (
             <Slide
@@ -35,19 +34,23 @@ const Slider = ({ slides, initialInterval = 1000 }) => {
         </Col>
       </Row>
 
-      <SliderControls
-        handlePrev={handlePrev}
-        handleNext={handleNext}
-        handlePlay={() => setIsPlaying(true)}
-        handleStop={() => setIsPlaying(false)}
-        isPlaying={isPlaying}
-        slideInterval={slideInterval}
-        setSlideInterval={setSlideInterval}
-      />
-
-      <AddSlide isPlaying={isPlaying} />
-      <DeleteSlide slideId={slides[currentIndex]?.id} isPlaying={isPlaying} />
-
+      <Row className={styles['control-row']}>
+        <Col className={styles['controls-left-wrapper']} xs={6}>
+          <SliderControls
+            handlePrev={handlePrev}
+            handleNext={handleNext}
+            handlePlay={() => setIsPlaying(true)}
+            handleStop={() => setIsPlaying(false)}
+            isPlaying={isPlaying}
+            slideInterval={slideInterval}
+            setSlideInterval={setSlideInterval}
+          />
+        </Col>
+        <Col className={styles['controls-right-wrapper']} xs={6}>
+          <AddSlide isPlaying={isPlaying} />
+          <DeleteSlide slideId={slides[currentIndex]?.id} isPlaying={isPlaying} />
+        </Col>
+      </Row>
     </Container>
   );
 };

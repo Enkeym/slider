@@ -1,19 +1,14 @@
-/* Основной контейнер слайда */
+/* Slide.module.css */
 .slide {
   width: 100%;
   height: 400px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  align-items: center;
+  background-color: #e9ecef;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  position: relative;
 }
 
-/* Стиль для изображения */
 .slide-image {
   display: block;
   width: 100%;
@@ -22,30 +17,12 @@
   border-radius: 10px;
 }
 
-/* Кнопка удаления слайда */
-.delete-slide-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: #dc3545;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  cursor: pointer;
-}
-
-.delete-slide-button:hover {
-  background-color: #c82333;
-}
-
-/* Текстовый слайд */
 .text-slide {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%;
   width: 100%;
+  height: 100%;
   background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
   color: white;
   font-size: 2rem;
@@ -53,40 +30,5 @@
   text-align: center;
   padding: 20px;
   border-radius: 10px;
-}
-
-/* Кнопки управления */
-.slider-controls {
-  display: flex;
-  justify-content: center;
-  margin-top: 15px;
-}
-
-.control-button {
-  margin: 0 5px;
-  font-size: 1.2rem;
-  padding: 10px 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s ease;
-  border: none;
-  cursor: pointer;
-  background-color: #007bff;
-  color: white;
-  border-radius: 5px;
-}
-
-.control-button:hover {
-  background-color: #0056b3;
-}
-
-/* Кнопки активного слайда */
-.control-button-active {
-  background-color: #28a745;
-}
-
-.control-button:disabled {
-  opacity: 0.65;
-  cursor: not-allowed;
+  box-sizing: border-box;
 }

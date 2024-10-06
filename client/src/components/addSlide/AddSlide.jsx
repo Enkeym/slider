@@ -27,18 +27,19 @@ const AddSlide = ({ isPlaying }) => {
   return (
     <>
       <Button
-        className={styles['add-slide-button']}
+        variant="success"
         onClick={handleShow}
         disabled={isPlaying}
+        className={styles['add-slide-button']}
       >
         Add Slide
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton className={styles['modal-header']}>
-          <Modal.Title className={styles['modal-title']}>Add New Slide</Modal.Title>
+      <Modal show={show} onHide={handleClose} centered backdrop="static">
+        <Modal.Header closeButton>
+          <Modal.Title>Add New Slide</Modal.Title>
         </Modal.Header>
-        <Modal.Body className={styles['modal-body']}>
+        <Modal.Body>
           <FormSlider onSubmit={handleAddSlide} />
         </Modal.Body>
       </Modal>
