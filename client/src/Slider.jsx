@@ -28,7 +28,7 @@ const Slider = ({ slides, initialInterval = 1000 }) => {
         <Col xs={12} lg={8}>
           {slides.length > 0 && (
             <Slide
-              slide={slides[currentIndex]}
+              slide={slides?.[currentIndex]}
               isPlaying={isPlaying}
             />
           )}
