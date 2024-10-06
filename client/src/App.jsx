@@ -1,4 +1,3 @@
-// client/src/App.jsx
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useGetSlidesQuery } from "../app/services/slides.api";
@@ -11,7 +10,6 @@ function App() {
   const slides = useSelector((state) => state.slides.slides);
   const { data, isLoading, isError, error } = useGetSlidesQuery();
 
-
   useEffect(() => {
     if (data) {
       dispatch(setSlides(data || []));
@@ -21,21 +19,17 @@ function App() {
   return (
     <>
       {isLoading && <span>Loading...</span>}
-      {
-        isError && (
-          <div>
-            <span>The album could not be uploaded!</span>
-            <p>{error?.message || "Unknown error occurred."}</p>
-          </div>
-        )
-      }
-      {
-        slides?.length > 0 ? (
-          <Slider slides={slides} interval={3000} />
-        ) : (
-          <WelcomeSlides />
-        )
-      }
+      {isError && (
+        <div>
+          <span>The album could not be uploaded!</span>
+          <p>{error?.message || "Unknown error occurred."}</p>
+        </div>
+      )}
+      {slides?.length > 0 ? (
+        <Slider slides={slides} interval={3000} />
+      ) : (
+        <WelcomeSlides />
+      )}
     </>
   );
 }
