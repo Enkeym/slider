@@ -5,9 +5,7 @@ services:
       context: .
       dockerfile: ./server/Dockerfile
     ports:
-      - '5000:5000' # Прокидываем порт 5000 для сервера
-    environment:
-      NODE_ENV: production # Указываем переменную окружения
+      - '5000:5000'
     restart: always
 
   client:
@@ -15,7 +13,5 @@ services:
       context: .
       dockerfile: ./client/Dockerfile
     ports:
-      - '5173:5173' # Прокидываем стандартный порт Vite (5173)
-    environment:
-      NODE_ENV: production # Указываем переменную окружения
+      - '5173:5173'
     restart: always
