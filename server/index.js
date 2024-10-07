@@ -17,7 +17,7 @@ const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(
+/* app.use(
   cors({
     origin: [
       'http://localhost:4173',
@@ -28,6 +28,14 @@ app.use(
       'http://77.222.53.239:4173/',
       'http://77.222.53.239:5000/'
     ],
+    methods: ['GET', 'POST', 'DELETE'],
+    credentials: true
+  })
+) */
+
+app.use(
+  cors({
+    origin: '*',
     methods: ['GET', 'POST', 'DELETE'],
     credentials: true
   })

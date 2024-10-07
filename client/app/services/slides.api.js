@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-export const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/'
+export const apiUrl =
+  import.meta.env.VITE_API_URL || 'http://77.222.53.239:5000/'
 
 export const slidesApi = createApi({
   reducerPath: 'slidesApi',
