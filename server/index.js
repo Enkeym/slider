@@ -17,21 +17,6 @@ const app = express()
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-/* app.use(
-  cors({
-    origin: [
-      'http://localhost:4173',
-      'http://192.168.0.142:4173',
-      'http://81.88.223.99:686/',
-      'http://81.88.223.99:4173/',
-      'http://81.88.223.99:5000/',
-      'http://77.222.53.239:4173/',
-      'http://77.222.53.239:5000/'
-    ],
-    methods: ['GET', 'POST', 'DELETE'],
-    credentials: true
-  })
-) */
 
 app.use(
   cors({
