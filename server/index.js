@@ -35,7 +35,12 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use(
   cors({
-    origin: '*',
+    origin: [
+      'http://77.222.53.239:4173',
+      'http://77.222.53.239:5000',
+      'http://77.222.53.239:5000/',
+      'http://77.222.53.239:4173/'
+    ],
     methods: ['GET', 'POST', 'DELETE'],
     credentials: true
   })
