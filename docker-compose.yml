@@ -15,4 +15,3 @@ services:
     ports:
       - '4173:4173'
     restart: always
-    command: yarn preview --host 0.0.0.0
