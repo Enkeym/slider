@@ -23,8 +23,8 @@ app.use(
     origin: [
       'http://77.222.53.239:4173',
       'http://77.222.53.239:5000',
-      'http://77.222.53.239:5000/',
-      'http://77.222.53.239:4173/'
+      'http://localhost:5000',
+      'http://localhost:4173'
     ],
     methods: ['GET', 'POST', 'DELETE'],
     credentials: true
