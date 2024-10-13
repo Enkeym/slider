@@ -17,7 +17,7 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-const allowedOrigins = process.env.API_URL?.split(',') || [
+const allowedOrigins = process.env.CLIENT_URL?.split(',') || [
   'http://localhost:4173'
 ]
 
