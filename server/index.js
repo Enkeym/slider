@@ -1,4 +1,3 @@
-//index.js
 import cors from 'cors'
 import dotenv from 'dotenv'
 import express from 'express'
@@ -18,14 +17,13 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
+const allowedOrigins = process.env.API_URL?.split(',') || [
+  'http://localhost:4173'
+]
+
 app.use(
   cors({
-    origin: [
-      'http://77.222.53.239:4173',
-      'http://77.222.53.239:5000',
-      'http://localhost:5000',
-      'http://localhost:4173'
-    ],
+    origin: allowedOrigins,
     methods: ['GET', 'POST', 'DELETE'],
     credentials: true
   })
