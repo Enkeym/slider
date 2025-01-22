@@ -11,15 +11,19 @@ const Slider = ({ slides, initialInterval = 1000 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [slideInterval, setSlideInterval] = useState(initialInterval);
 
-  const handleNext = useCallback(() => setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length), [slides.length]);
+  const handleNext = useCallback(() => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1 >= slides.length ? 0 : prevIndex + 1));
+  }, [slides.length]);
   const handlePrev = useCallback(() => setCurrentIndex((prevIndex) => (prevIndex === 0 ? slides.length - 1 : prevIndex - 1)), [slides.length]);
 
   useEffect(() => {
     if (isPlaying) {
-      const intervalId = setInterval(handleNext, slideInterval);
+      const intervalId = setInterval(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1 >= slides.length ? 0 : prevIndex + 1));
+      }, slideInterval);
       return () => clearInterval(intervalId);
     }
-  }, [handleNext, isPlaying, slideInterval]);
+  }, [isPlaying, slideInterval, slides.length]);
 
   return (
     <Container fluid className={styles['slider-container']}>
